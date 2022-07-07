@@ -19,8 +19,8 @@ const Users = () => {
     const amountMan = (number) => {
         if (number >= 20) {
             let digitArr = String(number).split('');
-            let p = Number(digitArr[digitArr.length - 1]);
-            return p === 2 || p === 3 || p === 4 ? 'человека' : "человек";
+            let n = Number(digitArr[digitArr.length - 1]);
+            return n === 2 || n === 3 || n === 4 ? 'человека' : "человек";
         } else {
             return number === 2 || number === 3 || number === 4 ? 'человека' : 'человек';
         }
