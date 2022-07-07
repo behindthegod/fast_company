@@ -10,7 +10,7 @@ const Users = () => {
 
     const handleDeleteUser = (userId) => {
         const newUsers = [...users];
-        const index = users.findIndex((user)=> user._id === userId);
+        const index = users.findIndex((user) => user._id === userId);
         newUsers.splice(index, 1);
         setUsers(newUsers);
     }
@@ -28,7 +28,7 @@ const Users = () => {
     //изменение окончания в зависимости от числителя.
 
     if (users.length === 0) {
-        return <Emptiness />
+        return <Emptiness/>
     }
 
     return (
@@ -45,14 +45,17 @@ const Users = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {users.map((user)=> (
+                {users.map((user) => (
                     <tr key={user._id}>
                         <td>{user.name}</td>
-                        <td>{user.qualities.map(el => <span className={'badge bg-' + el.color} key={el._id}>{el.name}</span>)}</td>
+                        <td>{user.qualities.map(el => <span className={'badge bg-' + el.color}
+                                                            key={el._id}>{el.name}</span>)}</td>
                         <td>{user.profession.name}</td>
                         <td>{user.completedMeetings}</td>
                         <td>{user.rate}</td>
-                        <button className='badge bg-danger' onClick={handleDeleteUser}>delete</button>
+                        <td>
+                            <button className='badge bg-danger' onClick={handleDeleteUser}>delete</button>
+                        </td>
                     </tr>
                 ))}
                 </tbody>
