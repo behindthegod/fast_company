@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import api from "../api";
 import {Emptiness} from "./Emptiness";
+import User from "./User";
+import SearchStatus from "./SearchStatus";
 
 
 const Users = () => {
@@ -15,17 +17,7 @@ const Users = () => {
         setUsers(newUsers);
     }
     //удаление юзеров.
-
-    const amountMan = (number) => {
-        if (number >= 20) {
-            let digitArr = String(number).split('');
-            let n = Number(digitArr[digitArr.length - 1]);
-            return n === 2 || n === 3 || n === 4 ? 'человека' : "человек";
-        } else {
-            return number === 2 || number === 3 || number === 4 ? 'человека' : 'человек';
-        }
-    }
-    //изменение окончания в зависимости от числителя.
+    
 
     if (users.length === 0) {
         return <Emptiness/>
@@ -33,8 +25,9 @@ const Users = () => {
 
     return (
         <>
-            <h2 className='badge bg-primary'>{`С тобой готовы затусить ${lengthUsers} ${amountMan(lengthUsers)}`}</h2>
+            <SearchStatus length={lengthUsers}/>
             <table>
+
                 <thead>
                 <tr>
                     <th>Имя</th>
@@ -46,17 +39,7 @@ const Users = () => {
                 </thead>
                 <tbody>
                 {users.map((user) => (
-                    <tr key={user._id}>
-                        <td>{user.name}</td>
-                        <td>{user.qualities.map(el => <span className={'badge bg-' + el.color}
-                                                            key={el._id}>{el.name}</span>)}</td>
-                        <td>{user.profession.name}</td>
-                        <td>{user.completedMeetings}</td>
-                        <td>{user.rate}</td>
-                        <td>
-                            <button className='badge bg-danger' onClick={handleDeleteUser}>delete</button>
-                        </td>
-                    </tr>
+                    <User user={user} handleDeleteUser={handleDeleteUser}/>
                 ))}
                 </tbody>
             </table>
