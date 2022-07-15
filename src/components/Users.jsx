@@ -1,33 +1,18 @@
-import React, {useState} from "react";
-import api from "../api";
+import React from "react";
 import {Emptiness} from "./Emptiness";
 import User from "./User";
 import SearchStatus from "./SearchStatus";
 
 
-const Users = () => {
-    const getUsersApi = api.users.fetchAll();
-    const [users, setUsers] = useState(getUsersApi);
-    let lengthUsers = users.length;
-
-    const handleDeleteUser = (userId) => {
-        const newUsers = [...users];
-        const index = users.findIndex((user) => user._id === userId);
-        newUsers.splice(index, 1);
-        setUsers(newUsers);
-    }
-    //удаление юзеров.
-    
+const Users = ({users, handleDeleteUser, length, handleToggleBookMark}) => {
 
     if (users.length === 0) {
         return <Emptiness/>
     }
-
     return (
         <>
-            <SearchStatus length={lengthUsers}/>
+            <SearchStatus length={length}/>
             <table>
-
                 <thead>
                 <tr>
                     <th>Имя</th>
@@ -35,11 +20,17 @@ const Users = () => {
                     <th>Профессия</th>
                     <th>Встретился, раз</th>
                     <th>Оценка</th>
+                    <th>Избранное</th>
                 </tr>
                 </thead>
                 <tbody>
                 {users.map((user) => (
-                    <User user={user} handleDeleteUser={handleDeleteUser}/>
+                    <User user={user}
+                          key={user._id}
+                          bookmark={user.bookmark}
+                          id={user._id}
+                          handleDeleteUser={handleDeleteUser}
+                          handleToggleBookMark={handleToggleBookMark}/>
                 ))}
                 </tbody>
             </table>

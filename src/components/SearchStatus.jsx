@@ -14,13 +14,3 @@ const SearchStatus = ({length}) => {
 }
 
 export default SearchStatus;
-
-// const amountMan = (number) => {
-//     if (number >= 20) {
-//         let digitArr = String(number).split('');
-//         let n = Number(digitArr[digitArr.length - 1]);
-//         return n === 2 || n === 3 || n === 4 ? 'человека' : "человек";
-//     } else {
-//         return number === 2 || number === 3 || number === 4 ? 'человека' : 'человек';
-//     }
-// }
