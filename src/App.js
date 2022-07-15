@@ -15,12 +15,11 @@ function App() {
     }
     const handleToggleBookMark = (id,bookmark) => {
         const newUsers = [...users];
-
-        let e = newUsers.map(el => el._id === id && el.bookmark
-            ? {...el, bookmark: false}
-            : {...el, bookmark: true})
-        setUsers(e)
+        setUsers(newUsers.map(el => el._id === id && el.bookmark === bookmark
+            ? {...el, bookmark: bookmark=true}
+            : {...el, bookmark: bookmark=false}))
     }
+
     return (
         <>
             <Users users={users}

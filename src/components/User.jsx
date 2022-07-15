@@ -1,7 +1,7 @@
 import React from "react";
 import BookMark from "./BookMark";
 
-const User = ({user, handleDeleteUser, handleToggleBookMark, bookmark,id}) => {
+const User = ({user, handleDeleteUser, handleToggleBookMark, bookmark, id}) => {
     return (
         <tr key={user._id}>
             <td>{user.name}</td>
@@ -10,7 +10,9 @@ const User = ({user, handleDeleteUser, handleToggleBookMark, bookmark,id}) => {
             <td>{user.profession.name}</td>
             <td>{user.completedMeetings}</td>
             <td>{user.rate}</td>
-            <td><button onClick={()=>handleToggleBookMark(id,bookmark)}><BookMark bookmark={bookmark}/></button></td>
+            <td>
+                <button onClick={() => handleToggleBookMark(id, bookmark)}><BookMark bookmark={bookmark}/></button>
+            </td>
             <td>
                 <button className='badge bg-danger' onClick={() => handleDeleteUser(id)}>delete</button>
             </td>
