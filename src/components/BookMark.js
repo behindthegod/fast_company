@@ -2,8 +2,8 @@ import React from "react";
 import ToggleOn from "../assets/toggleOn";
 import ToggleOff from "../assets/toggleOff";
 
-const BookMark = ({bookmark}) => {
-    return bookmark === true ? <ToggleOn/> : <ToggleOff/>
+const BookMark = ({status}) => {
+    return status === true ? <ToggleOn/> : <ToggleOff/>
 }
 
 export default BookMark;

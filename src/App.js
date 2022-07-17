@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import api from "./api";
 import Users from "./components/Users";
+import SearchStatus from "./components/SearchStatus";
+import {Emptiness} from "./components/Emptiness";
 
 
 
@@ -20,12 +22,17 @@ function App() {
             : el))
     }
 
+    if (users.length === 0) {
+        return <Emptiness/>
+    }
     return (
         <>
+            <SearchStatus length={lengthUsers}/>
             <Users users={users}
                    length={lengthUsers}
-                   handleDeleteUser={handleDeleteUser}
-                   handleToggleBookMark={handleToggleBookMark}/></>
+                   onDeleteUser={handleDeleteUser}
+                   onToggleBookMark={handleToggleBookMark}/>
+        </>
     )
 }
 

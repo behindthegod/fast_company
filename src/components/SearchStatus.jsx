@@ -1,6 +1,7 @@
 import React from "react";
 
 const SearchStatus = ({length}) => {
+
     function amountMan() {
         if (length >= 20) {
             let digitArr = String(length).split('');
@@ -10,7 +11,6 @@ const SearchStatus = ({length}) => {
             return length === 2 || length === 3 || length === 4 ? 'человека' : 'человек';
         }
     }
-
     return <h2 className='badge bg-primary'>{`С тобой готовы затусить ${length} ${amountMan(length)}`}</h2>
 }
 
