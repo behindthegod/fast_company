@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import User from "./User";
+import Pagination from "./Pagination";
 
 
 const Users = ({users, ...rest}) => {
-
+    const count = users.length;
+    const pageSize = 4;
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (pageIndex) => {
+        setCurrentPage(pageIndex);
+    }
     return (
         <>
             <table>
@@ -25,6 +31,11 @@ const Users = ({users, ...rest}) => {
                 ))}
                 </tbody>
             </table>
+
+            <Pagination itemsCount={count}
+                        pageSize={pageSize}
+                        currentPage={currentPage}
+                        onPageChange={handlePageChange}/>
         </>
     )
 }
