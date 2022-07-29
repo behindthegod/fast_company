@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ToggleOn from "../assets/ToggleOn";
 import ToggleOff from "../assets/ToggleOff";
-import PropTypes from "prop-types";
+
 
 const BookMark = ({ status }) => {
     return status === true ? <ToggleOn /> : <ToggleOff />;
