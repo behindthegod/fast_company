@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import BookMark from "./bookMark";
 import QualitiesList from "./qualitiesList";
 import Table from "./table";
+import BookMark from "./bookMark";
 
 
 const UserTable = ({
@@ -28,10 +28,12 @@ const UserTable = ({
             path: "bookmark",
             name: "Избранное",
             component: (user) => (
-                <BookMark
-                    status={user.bookmark}
-                    onClick={() => onToggleBookMark(user._id)}
-                />
+                <button>
+                    <BookMark
+                        status={user.bookmark}
+                        onClick={() => onToggleBookMark(user._id)}
+                    />
+                </button>
             )
         },
         delete: {
