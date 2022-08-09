@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import _ from "lodash";
 import api from "../api";
 import {paginate} from "../utils/paginate";
 import GroupList from "./groupList";
-import UsersTable from "./usersTable";
+import UserTable from "./usersTable";
 import SearchStatus from "./searchStatus";
 import Pagination from "./pagination";
 
@@ -62,11 +61,7 @@ const Users = () => {
             : users;
 
         const count = filteredUsers.length;
-        const sortedUsers = _.orderBy(
-            filteredUsers,
-            [sortBy.path],
-            [sortBy.order]
-        );
+        const sortedUsers = _.orderBy(filteredUsers, [sortBy.path], [sortBy.order]);
         const usersCrop = paginate(sortedUsers, currentPage, pageSize);
         const clearFilter = () => {
             setSelectedProf();
@@ -93,7 +88,7 @@ const Users = () => {
                 <div className="d-flex flex-column">
                     <SearchStatus length={count} />
                     {count > 0 && (
-                        <UsersTable
+                        <UserTable
                             users={usersCrop}
                             onSort={handleSort}
                             selectedSort={sortBy}
@@ -115,11 +110,6 @@ const Users = () => {
     }
     return "loading...";
 };
-
-Users.propTypes = {
-    users: PropTypes.array
-};
-
 
 export default Users;
 

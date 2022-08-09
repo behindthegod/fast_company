@@ -28,12 +28,10 @@ const UserTable = ({
             path: "bookmark",
             name: "Избранное",
             component: (user) => (
-                <button>
                     <BookMark
                         status={user.bookmark}
                         onClick={() => onToggleBookMark(user._id)}
                     />
-                </button>
             )
         },
         delete: {
